@@ -5,14 +5,19 @@ import mongoose from "mongoose";
 import router from './Router/routes.js';
 import errorHandlerMiddleware from './Middleware/ErrorHandler.js';
 import authRouter from './Router/authRouter.js';
+import cookieParser from 'cookie-parser';
+import { authenticateUser } from './Middleware/authMiddleware.js';
+import userRouter from "./Router/userRouter.js"
 
+//midleware
+app.use(cookieParser());
 app.use(express.json());
 
 
-// Router middleware
-app.use(router);
-app.use('/api/v1/auth', authRouter);
-
+// Router 
+app.use(router); 
+app.use(authRouter);
+app.use(authenticateUser, userRouter)
 
 
 app.use(errorHandlerMiddleware);
@@ -26,11 +31,3 @@ try {
   console.log(error);
   process.exit(1);
 }
-
-
-
-
-
-
-
-
