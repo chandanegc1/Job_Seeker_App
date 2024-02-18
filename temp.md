@@ -1,3 +1,6 @@
 #### express-async-errors
 
-3355
+
+const navigation = useNavigation();
+const isSubmitting = navigation.state === 'submitting';
+{isSubmitting ? 'submitting...' : 'submit'}

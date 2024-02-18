@@ -12,6 +12,9 @@ import {
   Profile,
   AllJobs,
 } from './pages';
+import { action as RegisterAction } from "./pages/Register";
+import { action as LoginAction} from "./pages/Login";
+import { loader as DashboardLoader } from "./pages/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -26,14 +29,17 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register />,
+        action:RegisterAction
       },
       {
         path: 'login',
         element: <Login />,
+        action:LoginAction
       },
       {
         path: 'dashboard',
         element: <DashboardLayout />,
+        loader:DashboardLoader,
         children: [
           {
             index: true,

@@ -15,10 +15,14 @@ app.use(express.json());
 
 
 // Router 
-app.use(router); 
-app.use(authRouter);
-app.use(authenticateUser, userRouter)
+app.use("/api/v1/jobs" , router); 
+app.use("/api/v1/auth" ,authRouter);
+app.use("/api/v1/user" , userRouter)
 
+
+app.get('/api/v1/test', (req, res) => {
+  res.json({ msg: 'test route' });
+});
 
 app.use(errorHandlerMiddleware);
 

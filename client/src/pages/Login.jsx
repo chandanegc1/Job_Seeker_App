@@ -1,16 +1,30 @@
 import { Logo, FormRow } from '../components';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
+import { Form, Link, redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import customFetch from '../utils/customFetch';
 
-import { Link } from 'react-router-dom';
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    const res = await customFetch.post('/auth/login', data);
+    toast.success(res.data.msg);
+    return null;
+  } catch (error) {
+    toast.error(error.response.data.msg);
+    return error;
+  }
+};
 
 const Login = () => {
   return (
     <Wrapper>
-      <form className='form'>
+      <Form method='post' className='form'>
         <Logo />
         <h4>Login</h4>
-        <FormRow type='email' name='email' defaultValue='john@gmail.com' />
-        <FormRow type='password' name='password' defaultValue='secret123' />
+        <FormRow type='email' name='email' defaultValue='chandanegc@gmail.com' />
+        <FormRow type='password' name='password' defaultValue='00000000' />
         <button type='submit' className='btn btn-block'>
           submit
         </button>
@@ -23,7 +37,7 @@ const Login = () => {
             Register
           </Link>
         </p>
-      </form>
+      </Form>
     </Wrapper>
   );
 };

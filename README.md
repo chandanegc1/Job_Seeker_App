@@ -2508,8 +2508,7 @@ app.post(
       return res.status(400).json({ errors: errorMessages });
     }
     next();
-  },
-  (req, res) => {
+  },  (req, res) => {
     const { name } = req.body;
     res.json({ msg: `hello ${name}` });
   }
