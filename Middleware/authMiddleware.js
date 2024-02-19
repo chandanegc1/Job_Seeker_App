@@ -6,7 +6,6 @@ export const authenticateUser = async (req, res, next) => {
     if (!token) {
       throw new UnauthenticatedError('authentication invalid');
     }
-  
     try {
       const { userId, role } = verifyJWT(token);
       req.user = { userId, role };
@@ -15,7 +14,6 @@ export const authenticateUser = async (req, res, next) => {
       throw new UnauthenticatedError('authentication invalid');
     }
   };
-
 
   export const authorizePermissions = (...roles) => {
     return (req, res, next) => {

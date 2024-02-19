@@ -11,9 +11,7 @@ export const createJob = async (req, res) => {
 
 
 export const getAlljob = async(req , res)=>{
-
     const jobs = await Job.find({});
-    console.log(req.user);
     res.status(StatusCodes.OK).json({jobs});
 }
 
