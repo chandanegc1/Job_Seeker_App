@@ -28,7 +28,7 @@ export const login = async (req, res) => {
   res.cookie('token', token, {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),
-    secure: 'production' === 'production',  //missing and understand
+    secure:   1,            //'production' === 'production',  //missing and not understand
   });
 
   res.status(StatusCodes.CREATED).json({ msg: 'user logged in' });
