@@ -93,7 +93,7 @@ export const validateLoginInput = withValidationErrors([
   body('password').notEmpty().withMessage('password is required'),
 ]);
 
-const validateUpdateUserInput = withValidationErrors([
+export const validateUpdateUserInput = withValidationErrors([
   body('name').notEmpty().withMessage('name is required'),
   body('email')
     .notEmpty()

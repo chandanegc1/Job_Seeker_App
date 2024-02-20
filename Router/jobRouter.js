@@ -6,6 +6,6 @@ import { authenticateUser } from "../Middleware/authMiddleware.js";
 const router = Router();
 
 router.route("/").post(authenticateUser, validateJobInput,createJob).get(authenticateUser ,getAlljob);
-router.route("/job:id").get(authenticateUser ,getJob).delete(authenticateUser , deletejob).patch(authenticateUser ,validateJobInput , updateJob);
+router.route("/:id").get(authenticateUser ,getJob).delete(authenticateUser , deletejob).patch(authenticateUser ,validateJobInput , updateJob);
 
 export default router;

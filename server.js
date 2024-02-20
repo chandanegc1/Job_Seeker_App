@@ -7,6 +7,13 @@ import errorHandlerMiddleware from './Middleware/ErrorHandler.js';
 import authRouter from './Router/authRouter.js';
 import cookieParser from 'cookie-parser';
 import userRouter from "./Router/userRouter.js"
+import {v2 as cloudinary} from 'cloudinary';
+
+import {dirname} from "path";
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+import { authenticateUser } from './Middleware/authMiddleware.js';
 
 //midleware
 app.use(cookieParser());
@@ -16,11 +23,20 @@ app.use(express.json());
 // Router 
 app.use("/api/v1/jobs" , jobRouter); 
 app.use("/api/v1/auth" ,authRouter);
-app.use("/api/v1/user" , userRouter)
+app.use("/api/v1/user", userRouter)
 
 app.use(errorHandlerMiddleware);
 
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname , './public')));
+
+
+cloudinary.config({
+  cloud_name: 'dwv1qch0y',
+  api_key: '655938423713366',
+  api_secret: 'UNoANjsbKZD6Q41qTwqtm32LluE'
+});
 
 try {
     mongoose.connect("mongodb://127.0.0.1:27017/JonSeeker");

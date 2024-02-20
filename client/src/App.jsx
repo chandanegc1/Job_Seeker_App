@@ -11,10 +11,21 @@ import {
   Admin,
   Profile,
   AllJobs,
+  EditJob
 } from './pages';
 import { action as RegisterAction } from "./pages/Register";
 import { action as LoginAction} from "./pages/Login";
 import { loader as DashboardLoader } from "./pages/DashboardLayout";
+import { action as Addjob } from "./pages/AddJob";
+import {loader as allJobsloader} from "./pages/Alljobs";
+
+import { loader as editJobLoader } from './pages/EditJob';
+import { action as editJobAction } from './pages/EditJob';
+import { action as deleteJobAction } from './pages/DeleteJob';
+
+import { loader as adminLoader } from './pages/Admin';
+import { action as profileAction } from './pages/Profile';
+
 
 const router = createBrowserRouter([
   {
@@ -44,20 +55,34 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <AddJob />,
+            action:Addjob
           },
           { path: 'stats', element: <Stats /> },
           {
             path: 'all-jobs',
             element: <AllJobs />,
+            loader:allJobsloader,
           },
 
           {
             path: 'profile',
             element: <Profile />,
+            action:profileAction
           },
           {
             path: 'admin',
             element: <Admin />,
+            loader: adminLoader,
+          },
+          {
+            path: 'edit-job/:id',
+            element: <EditJob/>,
+            loader: editJobLoader,
+            action: editJobAction,
+          },
+          { 
+            path: 'delete-job/:id',
+            action: deleteJobAction 
           },
         ],
       },

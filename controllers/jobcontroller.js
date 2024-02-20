@@ -18,6 +18,7 @@ export const getAlljob = async(req , res)=>{
 
 export const getJob = async (req, res) => {
     const { id } = req.params;
+    console.log(id);
     const job = await Job.findById(id);
     if (!job) throw new NotFoundError(`no job with id : ${id}`);
     res.status(StatusCodes.OK).json({ job });
