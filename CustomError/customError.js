@@ -15,13 +15,15 @@ export class BadRequestError extends Error {
       this.statusCode = StatusCodes.BAD_REQUEST;
     }
   }
-  export class UnauthenticatedError extends Error {
+
+ export class UnauthenticatedError extends Error {
     constructor(message) {
       super(message);
       this.name = 'UnauthenticatedError';
       this.statusCode = StatusCodes.UNAUTHORIZED;
     }
   }
+
   export class UnauthorizedError extends Error {
     constructor(message) {
       super(message);

@@ -16,8 +16,7 @@ export const getApplicationStats = async (req, res) => {
   const jobs = await Job.countDocuments();
   res.status(StatusCodes.OK).json({ users, jobs });
 };
-
-                                                                                                  
+                                                                                                 
 export const updateUser = async (req, res) => {
   const newUser = { ...req.body };
   delete newUser.password;
@@ -29,9 +28,7 @@ export const updateUser = async (req, res) => {
   }
 
   const updatedUser = await User.findByIdAndUpdate(req.user.userId, newUser);
-
-  if (req.file && updatedUser.avatarPublicId) {
+  if (req.file && updatedUser.avatarPublicId) 
     await cloudinary.v2.uploader.destroy(updatedUser.avatarPublicId);
-  }
   res.status(StatusCodes.OK).json({ msg: 'update user' });
 };
