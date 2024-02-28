@@ -11,6 +11,7 @@ export const action = async ({ request }) => {
   try {
     const res = await customFetch.post('/auth/login', data);
     toast.success(res.data.msg);
+    console.log("chandan")
     return redirect("/dashboard");
   } catch (error) {
     toast.error(error.response.data.msg);

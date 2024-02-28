@@ -13,8 +13,6 @@ import {dirname} from "path";
 import { fileURLToPath } from 'url';
 import path from 'path';
 
-import { authenticateUser } from './Middleware/authMiddleware.js';
-
 //midleware
 app.use(cookieParser());
 app.use(express.json());
@@ -24,6 +22,10 @@ app.use(express.json());
 app.use("/api/v1/jobs" , jobRouter); 
 app.use("/api/v1/auth" ,authRouter);
 app.use("/api/v1/user", userRouter)
+
+app.get("*",(req,res)=>{
+  res.send(path.resolve(__dirname,'./public','index.html'));
+})
 
 app.use(errorHandlerMiddleware);
 
@@ -40,6 +42,7 @@ cloudinary.config({
 
 try {
     mongoose.connect("mongodb+srv://jobtracker:BBBlMdnCSQMBKbFt@cluster0.kioi2eo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+    // mongoose.connect("mongodb://127.0.0.1:27017/JonSeeker");
     app.listen(5100 || process.env.PORT, () => {
       console.log('server running.... 5100');
     });
