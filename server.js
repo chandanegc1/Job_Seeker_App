@@ -40,11 +40,11 @@ cloudinary.config({
 
 try {
     mongoose.connect("mongodb+srv://jobtracker:BBBlMdnCSQMBKbFt@cluster0.kioi2eo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
-    app.listen(5100, () => {
+    app.listen(5100 || process.env.PORT, () => {
       console.log('server running.... 5100');
     });
 } catch (error) {
-  console.log(error);
+  console.log(error); 
   process.exit(1);
 }
 
