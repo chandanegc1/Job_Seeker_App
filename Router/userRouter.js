@@ -10,4 +10,4 @@ router.get('/current-user',authenticateUser, getCurrentUser);
 // router.get('/admin/app-stats', [authorizePermissions('admin') , getApplicationStats]);// doubt
 router.get('/admin/app-stats', getApplicationStats);// doubt
 router.patch('/update-user',authenticateUser, upload.single('avatar'), updateUser);
-export default router;
+export default router; 

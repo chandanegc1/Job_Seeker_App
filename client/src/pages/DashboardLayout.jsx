@@ -4,6 +4,7 @@ import { Navbar, BigSidebar, SmallSidebar } from '../components';
 import { useState, createContext, useContext } from 'react';
 import customFetch from '../utils/customFetch';
 import { toast } from 'react-toastify';
+
 const DashboardContext = createContext();
 
 export const loader = async()=>{
@@ -15,7 +16,6 @@ export const loader = async()=>{
     return redirect("/");
   }
 };
-
 
 
 

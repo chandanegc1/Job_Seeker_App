@@ -15,9 +15,9 @@ import {
 } from './pages';
 import { action as RegisterAction } from "./pages/Register";
 import { action as LoginAction} from "./pages/Login";
-import { loader as DashboardLoader, loader } from "./pages/DashboardLayout";
+import { loader as DashboardLoader } from "./pages/DashboardLayout";
 import { action as Addjob } from "./pages/AddJob";
-import {loader as allJobsloader} from "./pages/Alljobs";
+import {loader as allJobsloader} from "./pages/AllJobs";
 
 import { loader as editJobLoader } from './pages/EditJob';
 import { action as editJobAction } from './pages/EditJob';
@@ -43,11 +43,7 @@ const router = createBrowserRouter([
         element: <Register />,
         action:RegisterAction
       },
-      {
-        path: 'login',
-        element: <Login />,
-        action:LoginAction
-      },
+      
       {
         path: 'dashboard',
         element: <DashboardLayout />,
@@ -90,6 +86,11 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: 'login',
+        element: <Login />,
+        action:LoginAction
+      },
     ],
   },
 ]);
@@ -102,7 +103,10 @@ const App = () => {
   };
   
   const isDarkThemeEnabled = checkDefaultTheme();
-  return <RouterProvider router={router}/>
+  return <>
+  <RouterProvider router={router}/>
+  </>
+  
 }
 
 export default App

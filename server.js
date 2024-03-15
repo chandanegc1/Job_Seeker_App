@@ -22,10 +22,6 @@ app.use("/api/v1/jobs" , jobRouter);
 app.use("/api/v1/auth" ,authRouter);
 app.use("/api/v1/user", userRouter)
 
-
-
-
-
 app.use(errorHandlerMiddleware);
 
 
@@ -45,7 +41,7 @@ cloudinary.config({
 });
 
 try {
-    mongoose.connect("mongodb+srv://jobtracker:BBBlMdnCSQMBKbFt@cluster0.kioi2eo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+    // mongoose.connect("mongodb+srv://jobtracker:BBBlMdnCSQMBKbFt@cluster0.kioi2eo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
     // mongoose.connect("mongodb://127.0.0.1:27017/JonSeeker");
     app.listen(process.env.PORT || 5100 , () => {
       console.log('server running.... 5100');

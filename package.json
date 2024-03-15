@@ -1,7 +1,7 @@
 {
   "name": "mern",
   "version": "1.0.0",
-  "description": "",
+  "description": "Job seeker app",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "client": "cd client && npm run dev",
     "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
   },
-  "author": "",
+  "author": "Chandan Kanaujiya",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
